@@ -1,34 +1,26 @@
 
-console.log("Cartão Pai e Filhos: iniciando...");
+console.log("Iniciando Power-Up...");
 
-window.TrelloPowerUp.initialize({
+if (window.TrelloPowerUp) {
 
-  'card-buttons': function(t, options) {
+  console.log("Biblioteca Trello carregada!");
 
-    console.log("Capacidade card-buttons carregada!");
+  window.TrelloPowerUp.initialize({
 
-    return [{
+    'card-buttons': function(t) {
 
-      text: 'Cartão Pai e Filhos',
+      console.log("Capacidade card-buttons executada!");
 
-      condition: 'always',
+      return [];
 
-      callback: function(t) {
+    }
 
-        return t.popup({
+  });
 
-          title: 'Cartão Pai e Filhos',
+  console.log("Inicialização solicitada!");
 
-          url: 'https://othondaniel.github.io/cartao-pai-filhos/filhos.html',
+} else {
 
-          height: 300
+  console.error("Biblioteca Trello não encontrada!");
 
-        });
-
-      }
-
-    }];
-
-  }
-
-});
+}

@@ -1,89 +1,155 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>Cartão Pai e Filhos</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
-      background: #f8f9fa;
+      padding: 16px;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      background: #f7f8fa;
       color: #172b4d;
     }
 
-    h2 {
-      margin-top: 0;
-      font-size: 20px;
+    .container {
+      width: 100%;
     }
 
-    .card-pai {
+    .cabecalho {
+      margin-bottom: 18px;
+    }
+
+    .titulo {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+    }
+
+    .subtitulo {
+      font-size: 13px;
+      color: #6b778c;
+      margin: 0;
+    }
+
+    .card {
       background: white;
-      border: 1px solid #dfe1e6;
       border-radius: 10px;
       padding: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
+
+      border: 1px solid #dfe1e6;
     }
 
-    .tag {
+    .etiqueta {
       display: inline-block;
-      background: #e3fcef;
-      color: #216e4e;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
+
+      padding: 4px 8px;
+
+      border-radius: 4px;
+
+      background: #e9f2ff;
+      color: #0c66e4;
+
+      font-size: 11px;
+      font-weight: 700;
+
       margin-bottom: 10px;
     }
 
-    .progresso {
-      height: 8px;
-      background: #dfe1e6;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 12px;
+    .nome-pai {
+      font-size: 17px;
+      font-weight: 600;
+
+      margin: 0;
+
+      word-break: break-word;
     }
 
-    .progresso-barra {
+    .progresso-info {
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 16px;
+
+      font-size: 12px;
+      color: #6b778c;
+    }
+
+    .barra {
+      width: 100%;
+      height: 8px;
+
+      margin-top: 7px;
+
+      background: #dfe1e6;
+
+      border-radius: 10px;
+
+      overflow: hidden;
+    }
+
+    .barra-progresso {
       width: 0%;
       height: 100%;
+
       background: #22a06b;
+
+      transition: width 0.3s;
     }
 
-    .filhos {
-      background: white;
-      border: 1px solid #dfe1e6;
-      border-radius: 10px;
-      padding: 16px;
+    .titulo-secao {
+      font-size: 15px;
+      font-weight: 600;
+
+      margin: 0 0 12px 0;
     }
 
-    .tarefa {
-      padding: 12px 0;
-      border-bottom: 1px solid #eee;
-      color: #626f86;
-      font-size: 14px;
+    .sem-filhos {
+      text-align: center;
+
+      padding: 20px 10px;
+
+      color: #6b778c;
+
+      font-size: 13px;
     }
 
     .botao {
-      display: block;
       width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background: #0c66e4;
-      color: white;
+
+      margin-top: 14px;
+
+      padding: 11px;
+
       border: none;
       border-radius: 6px;
+
+      background: #0c66e4;
+      color: white;
+
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 600;
+
       cursor: pointer;
     }
 
@@ -91,78 +157,185 @@
       background: #0055cc;
     }
 
-    .aviso {
-      font-size: 12px;
-      color: #626f86;
-      margin-top: 15px;
+    .status {
+      margin-top: 12px;
+
       text-align: center;
+
+      font-size: 11px;
+
+      color: #6b778c;
     }
+
   </style>
 
 </head>
 
+
 <body>
 
-  <h2>Cartão Pai e Filhos</h2>
+  <div class="container">
 
-  <div class="card-pai">
+    <div class="cabecalho">
 
-    <span class="tag">CARTÃO PAI</span>
+      <h1 class="titulo">
+        Cartão Pai e Filhos
+      </h1>
 
-    <h3 id="nomePai">Carregando cartão...</h3>
+      <p class="subtitulo">
+        Gerencie as tarefas relacionadas a este cartão.
+      </p>
 
-    <div class="progresso">
-      <div class="progresso-barra"></div>
     </div>
 
-    <p>0% concluído</p>
 
-  </div>
+    <!-- CARTÃO PAI -->
 
-  <div class="filhos">
+    <div class="card">
 
-    <h3>Cartões filhos</h3>
+      <span class="etiqueta">
+        CARTÃO PAI
+      </span>
 
-    <div id="listaFilhos">
+      <h2
+        id="nomePai"
+        class="nome-pai">
+        Carregando...
+      </h2>
 
-      <div class="tarefa">
-        Nenhum cartão filho vinculado.
+
+      <div class="progresso-info">
+
+        <span>
+          Progresso
+        </span>
+
+        <span id="percentual">
+          0%
+        </span>
+
+      </div>
+
+
+      <div class="barra">
+
+        <div
+          id="barraProgresso"
+          class="barra-progresso">
+        </div>
+
       </div>
 
     </div>
 
-    <button class="botao" id="btnAdicionar">
-      + Adicionar cartão filho
-    </button>
 
-    <p class="aviso">
-      Versão inicial da interface.
-    </p>
+    <!-- CARTÕES FILHOS -->
+
+    <div class="card">
+
+      <h3 class="titulo-secao">
+        Cartões filhos
+      </h3>
+
+
+      <div
+        id="listaFilhos"
+        class="sem-filhos">
+
+        Nenhum cartão filho vinculado.
+
+      </div>
+
+
+      <button
+        id="btnAdicionar"
+        class="botao">
+
+        + Adicionar cartão filho
+
+      </button>
+
+
+      <div
+        id="status"
+        class="status">
+
+      </div>
+
+    </div>
 
   </div>
 
+
+  <!-- BIBLIOTECA DO TRELLO -->
+
   <script src="https://p.trellocdn.com/power-up.min.js"></script>
+
 
   <script>
 
+    // Criamos a conexão desta página
+    // com o Trello.
+
     var t = window.TrelloPowerUp.iframe();
+
+
+    // O Trello chama render() quando
+    // a interface precisa ser atualizada.
 
     t.render(function() {
 
-      t.card('name').then(function(nome) {
 
-        document.getElementById('nomePai').textContent = nome;
+      // Descobrimos o nome do cartão
+      // que está atualmente aberto.
 
-      }).catch(function() {
+      return t.card('name')
 
-        document.getElementById('nomePai').textContent =
-          'Cartão principal';
+        .then(function(nome) {
 
-      });
+          document.getElementById(
+            'nomePai'
+          ).textContent = nome;
+
+        })
+
+        .catch(function(erro) {
+
+          console.error(
+            'Erro ao obter cartão:',
+            erro
+          );
+
+          document.getElementById(
+            'nomePai'
+          ).textContent = 'Cartão atual';
+
+        });
 
     });
+
+
+    // Botão de adicionar filho.
+    //
+    // Ainda não cria o vínculo.
+    // Isso será implementado na próxima etapa.
+
+    document.getElementById(
+      'btnAdicionar'
+    ).addEventListener(
+      'click',
+      function() {
+
+        document.getElementById(
+          'status'
+        ).textContent =
+          'A função de adicionar cartões será implementada na próxima etapa.';
+
+      }
+    );
 
   </script>
 
 </body>
+
 </html>

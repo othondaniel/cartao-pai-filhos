@@ -1,18 +1,32 @@
 
+console.log("Cartão Pai e Filhos: iniciando...");
+
 window.TrelloPowerUp.initialize({
 
-  'card-buttons': function(t) {
+  'card-buttons': function(t, options) {
+
+    console.log("Capacidade card-buttons carregada!");
 
     return [{
+
       text: 'Cartão Pai e Filhos',
 
+      condition: 'always',
+
       callback: function(t) {
+
         return t.popup({
+
           title: 'Cartão Pai e Filhos',
-          url: './filhos.html',
-          height: 500
+
+          url: 'https://othondaniel.github.io/cartao-pai-filhos/filhos.html',
+
+          height: 300
+
         });
+
       }
+
     }];
 
   }
